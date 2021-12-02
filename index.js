@@ -8,6 +8,7 @@ Entry File For Upmonitor
 const http = require('http');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
+const config = require('./config');
 
 const server = http.createServer(function (req, res) {
   // Get URL and Parse
@@ -61,6 +62,7 @@ const server = http.createServer(function (req, res) {
 
       var payloadString = JSON.stringify(payload);
 
+      res.setHeader('Content-Type', 'application/json');
       res.writeHead(status);
 
       res.end(payloadString);
@@ -72,8 +74,8 @@ const server = http.createServer(function (req, res) {
 });
 
 // Server Starting Point:
-server.listen(3000, function () {
-  console.log('Server listening on port @3000 !!');
+server.listen(config.port, function () {
+  console.log(`Server listening on port ${config.port} in environment mode on "${config.envName}"`);
 });
 
 var handlers = {};
