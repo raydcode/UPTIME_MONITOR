@@ -1,0 +1,22 @@
+################################################################
+#                             UPTIME MONITOR                   #
+################################################################
+
+Requriements:
+
+1.The API Listens on a Port and accepts incoming HTTP requests for the {POST,GET,PUT,DELETE and HEAD} 
+
+2. The API allows a client to connect then create a new user,then edit and Delete that user 
+
+3.The API Allows a user to "SIGN IN " which gives them a token that they can use for subsequent authenticated requests.
+
+4. The API Allows the the user to "SIGN OUT " which invalidates their token.
+
+5.The API allows a signed-in user to use their token to create a new "check".
+
+6. The API allows a signed-in user to edit or delete any of their checks.
+
+7. In the Background, workers perform all the "checks" at the appropriate times,and send alerts to the users when a check changes its status from "UP" to "DOWN", or vice versa.
+
+***SMS library : we'll be sending SMS via Twilio.
+
