@@ -6,12 +6,43 @@ Entry File For Upmonitor
 
 // Dependencies
 const http = require('http');
+const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
+const fs = require('fs');
 
-const server = http.createServer(function (req, res) {
-  // Get URL and Parse
+const httpServer = http.createServer(function (req, res) {
+  unifiedServer(req, res);
+});
+
+// Server Starting Point:
+httpServer.listen(config.httpport, function () {
+  console.log(
+    `Server listening on port ${config.httpport} in environment mode on "${config.envName}"`
+  );
+});
+
+const httpsServerOptions = {
+  key: fs.readFileSync('./https/key.pem'),
+  cert: fs.readFileSync('./https/cert.pem'),
+};
+
+const httpsServer = https.createServer(
+  httpsServerOptions,
+  function (req, res) {
+    unifiedServer(req, res);
+  }
+);
+
+httpsServer.listen(config.httpsport, function () {
+  console.log(
+    `Server listening on port ${config.httpsport} in environment mode on "${config.envName}"`
+  );
+});
+
+//Unified Server
+var unifiedServer = (req, res) => {
   var parsedUrl = url.parse(req.url, true);
 
   // Get the Path
@@ -71,12 +102,7 @@ const server = http.createServer(function (req, res) {
       console.log('Request is Received ', status, payloadString);
     });
   });
-});
-
-// Server Starting Point:
-server.listen(config.port, function () {
-  console.log(`Server listening on port ${config.port} in environment mode on "${config.envName}"`);
-});
+};
 
 var handlers = {};
 

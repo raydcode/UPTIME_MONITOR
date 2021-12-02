@@ -11,14 +11,16 @@ var environments = {};
 // Staging (default ) Environment
 
 environments.staging = {
-  port: 3000,
+  httpport: 3000,
+  httpsport: 3001,
   envName: 'staging',
 };
 
 // Production Environment
 
 environments.production = {
-  port: 5000,
+  httpport: 5000,
+  httpsport: 5001,
   envName: 'production',
 };
 

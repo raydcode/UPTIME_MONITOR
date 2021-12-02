@@ -20,3 +20,4 @@ Requriements:
 
 ***SMS library : we'll be sending SMS via Twilio.
 
+# open SSL certificate keyGeneration : openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
