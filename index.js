@@ -1,9 +1,3 @@
-/* 
-
-Entry File For Upmonitor
-
-*/
-
 // Dependencies
 const http = require('http');
 const https = require('https');
@@ -11,6 +5,18 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const _data = require('./lib/data');
+const handlers = require('./lib/handlers');
+
+_data.delete('test', 'newFile',function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("deletd");
+  }
+});
+
+
 
 const httpServer = http.createServer(function (req, res) {
   unifiedServer(req, res);
@@ -28,12 +34,9 @@ const httpsServerOptions = {
   cert: fs.readFileSync('./https/cert.pem'),
 };
 
-const httpsServer = https.createServer(
-  httpsServerOptions,
-  function (req, res) {
-    unifiedServer(req, res);
-  }
-);
+const httpsServer = https.createServer(httpsServerOptions, function (req, res) {
+  unifiedServer(req, res);
+});
 
 httpsServer.listen(config.httpsport, function () {
   console.log(
@@ -104,17 +107,7 @@ var unifiedServer = (req, res) => {
   });
 };
 
-var handlers = {};
-
-handlers.sample = (data, callback) => {
-  // callback http status code and a Payload Object
-  callback(406, { name: 'sample Handler' });
-};
-
-handlers.notFound = (data, callback) => {
-  callback(404);
-};
-
 var router = {
-  sample: handlers.sample,
+  ping: handlers.ping,
+  users: handlers.users,
 };
