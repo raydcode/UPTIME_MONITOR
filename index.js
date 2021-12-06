@@ -7,16 +7,7 @@ const config = require('./config');
 const fs = require('fs');
 const _data = require('./lib/data');
 const handlers = require('./lib/handlers');
-
-_data.delete('test', 'newFile',function (err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("deletd");
-  }
-});
-
-
+const helpers = require('./lib/helpers');
 
 const httpServer = http.createServer(function (req, res) {
   unifiedServer(req, res);
@@ -85,7 +76,7 @@ var unifiedServer = (req, res) => {
       queryStringObject,
       method,
       headers,
-      payload: buffer,
+      payload: helpers.parseJsonToObject(buffer),
     };
 
     chosenHandler(data, (status, payload) => {
@@ -102,7 +93,7 @@ var unifiedServer = (req, res) => {
       res.end(payloadString);
 
       //Server LOG :
-      console.log('Request is Received ', status, payloadString);
+      console.log(` ${method.toUpperCase()}`, status, payloadString);
     });
   });
 };

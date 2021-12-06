@@ -14,6 +14,7 @@ environments.staging = {
   httpport: 3000,
   httpsport: 3001,
   envName: 'staging',
+  secert: 'thisissecert',
 };
 
 // Production Environment
@@ -22,6 +23,7 @@ environments.production = {
   httpport: 5000,
   httpsport: 5001,
   envName: 'production',
+  secert: 'thisissecert',
 };
 
 var currentEnvironment =
