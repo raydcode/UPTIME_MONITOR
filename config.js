@@ -6,7 +6,7 @@ Create and export Configuration Variables :
 
 // Container for Environment
 
-var environments = {};
+const environments = {};
 
 // Staging (default ) Environment
 
@@ -15,6 +15,7 @@ environments.staging = {
   httpsport: 3001,
   envName: 'staging',
   secert: 'thisissecert',
+  maxChecks: 5,
 };
 
 // Production Environment
@@ -24,14 +25,15 @@ environments.production = {
   httpsport: 5001,
   envName: 'production',
   secert: 'thisissecert',
+  maxChecks: 5,
 };
 
-var currentEnvironment =
+const currentEnvironment =
   typeof process.env.NODE_ENV === 'string'
     ? process.env.NODE_ENV.toLowerCase()
     : '';
 
-var environmentToExport =
+const environmentToExport =
   typeof environments[currentEnvironment] == 'object'
     ? environments[currentEnvironment]
     : environments.staging;
