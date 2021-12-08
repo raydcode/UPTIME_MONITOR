@@ -16,6 +16,11 @@ environments.staging = {
   envName: 'staging',
   secert: 'thisissecert',
   maxChecks: 5,
+  twilio: {
+    accountSid: 'AC9b78629ee78ca0d0172130b17a31094a',
+    authToken: '3139ac330b059746b5978aa6110548f0',
+    fromPhone: '+18506053724',
+  },
 };
 
 // Production Environment

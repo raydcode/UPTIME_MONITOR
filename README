@@ -1,8 +1,8 @@
-################################################################
-#                             UPTIME MONITOR                   #
-################################################################
 
-Requriements:
+#    UPTIME MONITOR 
+
+
+# Requriements:
 
 1.The API Listens on a Port and accepts incoming HTTP requests for the {POST,GET,PUT,DELETE and HEAD} 
 
