@@ -7,7 +7,7 @@ let app = {};
 
 app.init = () => {
   server.init();
-  // worker.init();
+  worker.init();
 };
 
 app.init();
