@@ -1,1 +1,5 @@
-{"phoneNumber":"9080409613","tokenId":"8a11c83059fac8e18ae2","expires":1639038943196}
+{
+  "phoneNumber": "9080409613",
+  "tokenId": "8a11c83059fac8e18ae2",
+  "expires": 1639038943196
+}

@@ -3,8 +3,6 @@ const worker = require('./lib/workers');
 
 let app = {};
 
-
-
 app.init = () => {
   server.init();
   worker.init();
@@ -13,3 +11,4 @@ app.init = () => {
 app.init();
 
 module.exports = app;
+

@@ -21,6 +21,12 @@ environments.staging = {
     authToken: '3611062f22361f5579e6feacf06b6782',
     fromPhone: '+18506053724',
   },
+  templateGlobals: {
+    appName: 'Up Time Monitor',
+    companyName: 'Ray D Code',
+    yearCreated:'2021',
+    baseUrl: 'http://localhost:3000'
+  }
 };
 
 // Production Environment
@@ -31,6 +37,12 @@ environments.production = {
   envName: 'production',
   secert: 'thisissecert',
   maxChecks: 5,
+  templateGlobals: {
+    appName: 'Up Time Monitor',
+    companyName: 'Ray D Code',
+    yearCreated:'2021',
+    baseUrl: 'http://localhost:5000'
+  }
 };
 
 const currentEnvironment =
